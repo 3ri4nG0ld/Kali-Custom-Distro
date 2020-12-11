@@ -5,3 +5,5 @@ bspwm --> /etc/bspwm/bspwmrc
 bspwm.desktop --> /usr/share/xsessions/bspwm.desktop
 
 bspwm_resize --> /etc/bspwm/scripts/resize
+
+compton.conf --> /etc/compton/compton.conf

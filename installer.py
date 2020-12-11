@@ -96,12 +96,14 @@ def instalar_y_configurar_bspwm_kali():
 			os.system("sudo mkdir /etc/bspwm")
 			os.system("sudo mkdir /etc/sxhkd")
 			os.system("sudo mkdir /etc/bspwm/scripts/")
+			os.system("sudo mkdir /etc/compton/")
 
 			os.system("sudo cp configs/bspwmrc /etc/bspwm/bspwmrc")
 			os.system("sudo cp configs/sxhkdrc /etc/sxhkd/sxhkdrc")
 			os.system("sudo cp configs/bspwm_resize /etc/bspwm/scripts/resize")
 			os.system("sudo chmod +x /etc/bspwm/scripts/resize")
 			os.system("sudo cp configs/bspwm.desktop /usr/share/xsessions/bspwm.desktop")
+			os.system("sudo cp configs/compton.conf /etc/compton/compton.conf")
 
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
