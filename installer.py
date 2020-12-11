@@ -104,11 +104,13 @@ def instalar_y_configurar_bspwm_kali():
 			os.system("sudo chmod +x /etc/bspwm/scripts/resize")
 			os.system("sudo cp configs/bspwm.desktop /usr/share/xsessions/bspwm.desktop")
 			os.system("sudo cp configs/compton.conf /etc/compton/compton.conf")
-			os.system("sudo chmod 777 /etc/compton/compton.conf")
+			os.system("sudo chmod 555 /etc/compton/compton.conf")
+			os.system("sudo chmod 555 /etc/bspwm/bspwmrc")
 
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
 			print("[ BSPWM instalado ]")
+			reiniciar()
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
 		print("NO se Instalara")
 	else:
@@ -120,8 +122,14 @@ def configurar_tmux():
 	return
 
 
-
-
+def reiniciar():
+	os.system()
+	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no)")
+	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
+		print("Reiniciando...")
+		os.system("sudo reboot")
+	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
+		print("Saliendo...")
 
 
 
