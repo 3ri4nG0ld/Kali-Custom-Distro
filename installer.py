@@ -123,7 +123,7 @@ def configurar_tmux():
 
 
 def reiniciar():
-	os.system()
+	os.system("clear")
 	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no)")
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 		print("Reiniciando...")
