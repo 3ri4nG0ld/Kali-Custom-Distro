@@ -1,6 +1,6 @@
 #! /bin/sh
 
-pgrep -x sxhkd -c /etc/sxhkd/sxhkdrc > /dev/null || sxhkd &
+pgrep -x sxhkd > /dev/null || sxhkd -c /etc/sxhkd/sxhkdrc &
 compton --config /etc/compton/compton.conf &
 
 wmname LG3D &
