@@ -9,7 +9,7 @@ def instalar_requisitos(programa):
 		os.system("sudo apt-get install acpi -y")
 	elif (programa == "BSPWM"):
 		os.system("sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev -y")
-		os.system("sudo apt-get install compton feh rofi compton git-y")
+		os.system("sudo apt-get install compton feh rofi compton git -y")
 
 def instalar_scripts(plataforma):
 	os.system("sudo chmod +x scripts/genericos/*")
