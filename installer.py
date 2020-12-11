@@ -88,12 +88,10 @@ def instalar_y_configurar_bspwm_kali():
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 			instalar_requisitos("BSPWM")
 			os.system("sudo apt-get install bspwm -y")
-			os.system("mkdir /tmp/installer-bspwn")
-			os.system("cd /tmp/installer-bspwn")
 			os.system("git clone https://github.com/baskerville/bspwm.git")
 			os.system("git clone https://github.com/baskerville/sxhkd.git")
 			os.system("cd bspwm && make && sudo make install")
-			os.system("cd ../sxhkd && make && sudo make install")
+			os.system("cd sxhkd && make && sudo make install")
 
 			os.system("sudo mkdir /etc/bspwm")
 			os.system("sudo mkdir /etc/sxhkd")
