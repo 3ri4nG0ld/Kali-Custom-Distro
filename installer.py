@@ -71,7 +71,8 @@ def eliminar_Desktop_Enviroment():
 def instalar_y_configurar_i3wm_kali():
 	os.system("sudo apt-get update")
 	os.system("clear")
-	print("Quieres instalar i3wm??(Yes/no)")
+	opt=input("Quieres instalar i3wm??(Yes/no): ")
+
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 		os.system("sudo apt-get install i3wm -y")
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
@@ -83,7 +84,7 @@ def instalar_y_configurar_i3wm_kali():
 def instalar_y_configurar_bspwm_kali():
 	os.system("sudo apt-get update")
 	os.system("clear")
-	print("Quieres instalar bspwm??(Yes/no)")
+	opt=input("Quieres instalar bspwm??(Yes/no): ")
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 			instalar_requisitos("BSPWM")
 			os.system("sudo apt-get install bspwm -y")
