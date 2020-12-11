@@ -73,11 +73,11 @@ def instalar_y_configurar_i3wm_kali():
 	os.system("clear")
 	print("Quieres instalar i3wm??(Yes/no)")
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
-			os.system("sudo apt-get install i3wm -y")
-		elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
-			print("NO se Instalara")
-		else:
-			print("NO se Instalara")
+		os.system("sudo apt-get install i3wm -y")
+	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
+		print("NO se Instalara")
+	else:
+		print("NO se Instalara")
 
 
 def instalar_y_configurar_bspwm_kali():
@@ -103,10 +103,10 @@ def instalar_y_configurar_bspwm_kali():
 
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
-		elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
-			print("NO se Instalara")
-		else:
-			print("NO se Instalara")
+	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
+		print("NO se Instalara")
+	else:
+		print("NO se Instalara")
 
 
 
