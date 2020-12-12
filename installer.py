@@ -80,6 +80,25 @@ def instalar_y_configurar_i3wm_kali():
 	else:
 		print("NO se Instalara")
 
+def instalar_fuentes():
+	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip")
+	os.system("sudo unzip /usr/local/share/fonts/Hack.zip")
+	os.system("sudo rm -rf /usr/local/share/fonts/Hack.zip")
+
+def instalar_y_configurar_polybar(tipo):
+	os.system("sudo apt-get install polybar -y")
+	instalar_fuentes()
+	os.system("sudo cp configs/launch-polybar.sh /etc/bspwm/scripts/launch-polybar.sh")
+	os.system("sudo chmod 555 /etc/bspwm/scripts/launch-polybar.sh")
+	os.system("sudo mkdir /etc/polybar/")
+
+
+	if (tipo == "PC"):
+		print("Configurar Polybar PC")
+		os.system("sudo cp configs/POLYBAR-PC /etc/polybar/config")
+	elif (tipo == "LAPTOP"):
+		print("Configurar Polybar LAPTOP")
+		os.system("sudo cp configs/POLYBAR-LAPTOP /etc/polybar/config")
 
 def instalar_y_configurar_bspwm_kali():
 	os.system("sudo apt-get update")
@@ -109,6 +128,8 @@ def instalar_y_configurar_bspwm_kali():
 
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
+
+			instalar_y_configurar_polybar("PC")
 			print("[ BSPWM instalado ]")
 			reiniciar()
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
@@ -133,7 +154,8 @@ def reiniciar():
 
 
 
-
+def instalar_otras_herramientas():
+	os.system("sudo apt-get install bat")
 
 
 

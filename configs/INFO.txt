@@ -7,3 +7,8 @@ bspwm.desktop --> /usr/share/xsessions/bspwm.desktop
 bspwm_resize --> /etc/bspwm/scripts/resize
 
 compton.conf --> /etc/compton/compton.conf
+
+launch-polybar.sh --> /etc/bspwm/scripts/launch-polybar.sh
+
+POLYBAR-LAPTOP --> /etc/polybar/config
+POLYBAR-PC --> /etc/polybar/config
