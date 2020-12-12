@@ -97,15 +97,13 @@ def instalar_y_configurar_polybar(tipo):
 	os.system("sudo cp configs/launch-polybar.sh /etc/bspwm/scripts/launch-polybar.sh")
 	os.system("sudo chmod 555 /etc/bspwm/scripts/launch-polybar.sh")
 	os.system("sudo mkdir /etc/polybar/")
-
-
 	if (tipo == "PC"):
-		print("Configurar Polybar PC")
+		print("Configurando Polybar para PC...")
 		os.system("sudo cp configs/POLYBAR-PC /etc/polybar/config")
 	elif (tipo == "LAPTOP"):
-		print("Configurar Polybar LAPTOP")
+		print("Configurando Polybar para Laptop...")
 		os.system("sudo cp configs/POLYBAR-LAPTOP /etc/polybar/config")
-def instalar_y_configurar_bspwm_kali():
+def instalar_y_configurar_bspwm_kali(tipo):
 	os.system("sudo apt-get update")
 	os.system("clear")
 	opt=input("Quieres instalar bspwm??(Yes/no): ")
@@ -134,7 +132,7 @@ def instalar_y_configurar_bspwm_kali():
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
 
-			instalar_y_configurar_polybar("PC")
+			instalar_y_configurar_polybar(tipo)
 			use_vmware()
 			print("[ BSPWM instalado ]")
 			reiniciar()
@@ -163,7 +161,7 @@ def instalar_otras_herramientas():
 def instalar_kali_pc():
 	instalar_scripts("PC")
 	instalar_y_configurar_i3wm_kali()
-	instalar_y_configurar_bspwm_kali()
+	instalar_y_configurar_bspwm_kali("PC")
 
 def instalar_kali_pc_nogui():
 	instalar_scripts("PC-NOGUI")
@@ -172,7 +170,7 @@ def instalar_kali_pc_nogui():
 def instalar_kali_laptop():
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
-	instalar_y_configurar_bspwm_kali()
+	instalar_y_configurar_bspwm_kali("LAPTOP")
 
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
