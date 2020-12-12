@@ -11,6 +11,7 @@ def instalar_requisitos(programa):
 		os.system("sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev -y")
 		os.system("sudo apt-get install compton feh rofi compton git -y")
 def use_vmware():
+	os.system("clear")
 	opt=input("Usas VMware?? (yes/No): ")
 	if ((opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 		os.system("sudo echo -e '\nvmware-user-suid-wrapper &' >> /etc/bspwm/bspwmrc")
@@ -88,10 +89,14 @@ def instalar_y_configurar_i3wm_kali():
 	else:
 		print("NO se Instalara")
 
+def configuracion_qterminal():
+	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
+	print("Configuracion de Qterminal copiada")
+
+
 def instalar_fuentes():
-	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip")
-	os.system("sudo unzip /usr/local/share/fonts/Hack.zip")
-	os.system("sudo rm -rf /usr/local/share/fonts/Hack.zip")
+
+	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip && sudo unzip /usr/local/share/fonts/Hack.zip && sudo rm -rf /usr/local/share/fonts/Hack.zip")
 
 def instalar_y_configurar_polybar(tipo):
 	os.system("sudo apt-get install polybar -y")
@@ -146,8 +151,6 @@ def instalar_y_configurar_bspwm_kali():
 	else:
 		print("NO se Instalara")
 
-
-
 def configurar_tmux():
 	return
 
@@ -164,6 +167,7 @@ def reiniciar():
 
 
 def instalar_otras_herramientas():
+	os.system("new_line_before_prompt=no") #Elimina nueva linea por cada comando en ZSH
 	os.system("sudo apt-get install bat")
 
 

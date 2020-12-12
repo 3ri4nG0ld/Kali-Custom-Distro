@@ -12,3 +12,5 @@ launch-polybar.sh --> /etc/bspwm/scripts/launch-polybar.sh
 
 POLYBAR-LAPTOP --> /etc/polybar/config
 POLYBAR-PC --> /etc/polybar/config
+
+qterminal.ini --> /etc/xdg/qterminal.org/qterminal.ini
