@@ -1,23 +1,26 @@
 [colors]
-background = #000
+background = #000000
 background-alt = #444
-foreground = #dfdfdf
+foreground = #ffffff
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
 alert = #bd2c40
 
+;------------------------------------------------------ BAR Config
 [bar/example]
 width = 100%
 height = 27
 radius = 6.0
 fixed-center = true
+bottom = true
+
 
 background = #000000
 foreground = #ffffff
 
-line-size = 3
-line-color = #f00
+;line-size = 3
+;line-color = #fff
 
 border-size = 4
 border-color = #00000000
@@ -28,14 +31,14 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = fixed:pixelsize=10;1
+font-0 = fixed:pixelsize=10;2
 font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-2 = siji:pixelsize=10;1
-font-3 = Hack Nerd Font Mono
+font-2 = siji:pixelsize=10;2
+font-3 = Hack Nerd Font Mono :pixelsize=16;3
 
 modules-left = bspwm
 modules-center =
-modules-right = xbacklight pulseaudio wlan eth battery date
+modules-right = wlan eth pulseaudio battery date
 
 tray-position = right
 tray-padding = 2
@@ -56,133 +59,88 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 
+
+;------------------------------------------------------ Modulo bspwm
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = 
+label-focused = ""
 label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
 label-focused-padding = 2
 
-label-occupied = 
+label-occupied = ""
 label-occupied-padding = 2
 
-label-urgent = 
+label-urgent = ""
 label-urgent-background = ${colors.alert}
 label-urgent-padding = 2
 
-label-empty = 
-label-empty-foreground = ${colors.foreground-alt}
+label-empty = ""
+label-empty-foreground = #ffcc00
 label-empty-padding = 2
 
 ; Separator in between workspaces
 ;label-separator = |
 
-[module/xbacklight]
-type = internal/xbacklight
-
-format = <label> <bar>
-label = BL
-
-bar-width = 10
-bar-indicator = |
-bar-indicator-foreground = #fff
-bar-indicator-font = 2
-bar-fill = ─
-bar-fill-font = 2
-bar-fill-foreground = #9f78e1
-bar-empty = ─
-bar-empty-font = 2
-bar-empty-foreground = ${colors.foreground-alt}
-
-[module/backlight-acpi]
-inherit = module/xbacklight
-type = internal/backlight
-card = intel_backlight
 
 
+;------------------------------------------------------ Modulo wlan0
 [module/wlan]
 type = internal/network
-interface = wlp59s0
+interface = wlan0
 interval = 3.0
-
-format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
-label-connected = %essid%
+format-connected-prefix = " "
+format-connected = <label-connected>
+label-connected = "(%essid%) %local_ip%"
 
 format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
-ramp-signal-0 = 
-ramp-signal-1 = 
-ramp-signal-2 = 
-ramp-signal-3 = 
-ramp-signal-4 = 
-ramp-signal-foreground = ${colors.foreground-alt}
 
+
+
+;------------------------------------------------------ Modulo eth0
 [module/eth]
 type = internal/network
-interface = enp0s31f6
+interface = eth0
 interval = 3.0
-
-format-connected-underline = #55aa55
-format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.foreground-alt}
-label-connected = %local_ip%
+format-connected-prefix = " "
+format-connected-prefix-foreground = #ffffff
+label-connected = "%local_ip%"
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
+
 ;label-disconnected = %ifname% disconnected
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
+;------------------------------------------------------ Modulo date
 [module/date]
 type = internal/date
 interval = 5
 
-date =
-date-alt = " %Y-%m-%d"
+date = " [%d/%m/%Y]"
+time = " [%I:%M]"
+label = "%date% %time%"
 
-time = %I:%M
-time-alt = %I:%M:%S
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = #0a6cf5
-
-label = %date% %time%
-
+;------------------------------------------------------ Modulo Volumen
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = %percentage%%
+format-volume = "<ramp-volume> <label-volume>"
+
+ramp-volume-0 = ""
+ramp-volume-1 = ""
+ramp-volume-2 = ""
+
+label-volume = " %percentage%%"
 label-volume-foreground = ${root.foreground}
 
-label-muted = 🔇 muted
-label-muted-foreground = #666
-
-bar-volume-width = 10
-bar-volume-foreground-0 = #55aa55
-bar-volume-foreground-1 = #55aa55
-bar-volume-foreground-2 = #55aa55
-bar-volume-foreground-3 = #55aa55
-bar-volume-foreground-4 = #55aa55
-bar-volume-foreground-5 = #f5a70a
-bar-volume-foreground-6 = #ff5555
-bar-volume-gradient = false
-bar-volume-indicator = 
-bar-volume-indicator-font = 2
-bar-volume-fill = ─
-bar-volume-fill-font = 2
-bar-volume-empty = ─
-bar-volume-empty-font = 2
-bar-volume-empty-foreground = ${colors.foreground-alt}
+label-muted = "ﱝ %percentage%%"
+label-muted-foreground = #ff0f0f
+;click-right = pavucontrol
 
 
+;------------------------------------------------------ Modulo bateria
 [module/battery]
 type = internal/battery
 battery = BAT0
@@ -190,14 +148,13 @@ adapter = AC
 full-at = 98
 
 format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
 
 format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+
 
 format-full-prefix = " "
 format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+
 
 ramp-capacity-0 = 
 ramp-capacity-1 = 
@@ -216,6 +173,10 @@ animation-discharging-2 = 
 animation-discharging-foreground = ${colors.foreground-alt}
 animation-discharging-framerate = 750
 
+
+
+
+;------------------------------------------------------ Otros ajustes
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
