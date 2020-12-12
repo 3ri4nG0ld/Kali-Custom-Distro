@@ -86,8 +86,8 @@ def instalar_y_configurar_i3wm_kali():
 	else:
 		print("NO se Instalara")
 def configuracion_qterminal():
-	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
 	os.system("sudo rm -rf ~/.config/qterminal.org/qterminal.ini")
+	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
 	print("Configuracion de Qterminal copiada")
 def instalar_fuentes():
 
@@ -135,6 +135,7 @@ def instalar_y_configurar_bspwm_kali(tipo):
 
 			instalar_y_configurar_polybar(tipo)
 			use_vmware()
+			configuracion_qterminal()
 			print("[ BSPWM instalado ]")
 			reiniciar()
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
