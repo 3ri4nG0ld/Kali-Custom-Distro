@@ -92,18 +92,14 @@ def configuracion_qterminal():
 def instalar_fuentes():
 
 	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip && sudo unzip /usr/local/share/fonts/Hack.zip && sudo rm -rf /usr/local/share/fonts/Hack.zip")
-def instalar_y_configurar_polybar(tipo):
+def instalar_y_configurar_polybar():
 	os.system("sudo apt-get install polybar -y")
 	instalar_fuentes()
 	os.system("sudo cp configs/launch-polybar.sh /etc/bspwm/scripts/launch-polybar.sh")
 	os.system("sudo chmod 555 /etc/bspwm/scripts/launch-polybar.sh")
 	os.system("sudo mkdir /etc/polybar/")
-	if (tipo == "PC"):
-		print("Configurando Polybar para PC...")
-		os.system("sudo cp configs/POLYBAR-PC /etc/polybar/config")
-	elif (tipo == "LAPTOP"):
-		print("Configurando Polybar para Laptop...")
-		os.system("sudo cp configs/POLYBAR-LAPTOP /etc/polybar/config")
+	os.system("sudo cp configs/POLYBAR /etc/polybar/config")
+	
 def instalar_y_configurar_bspwm_kali(tipo):
 	os.system("sudo apt-get update")
 	os.system("clear")
@@ -133,7 +129,7 @@ def instalar_y_configurar_bspwm_kali(tipo):
 			os.system("sudo mkdir /etc/wallpaper")
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
 
-			instalar_y_configurar_polybar(tipo)
+			instalar_y_configurar_polybar()
 			use_vmware()
 			configuracion_qterminal()
 			print("[ BSPWM instalado ]")
