@@ -10,6 +10,14 @@ def instalar_requisitos(programa):
 	elif (programa == "BSPWM"):
 		os.system("sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev -y")
 		os.system("sudo apt-get install compton feh rofi compton git -y")
+def use_vmware():
+	opt=input("Usas VMware?? (yes/No): ")
+	if ((opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
+		os.system("sudo echo -e '\nvmware-user-suid-wrapper &' >> /etc/bspwm/bspwmrc")
+	elif ((opt == "") or (opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
+		return
+	else:
+		return
 
 def instalar_scripts(plataforma):
 	os.system("sudo chmod +x scripts/genericos/*")
@@ -130,6 +138,7 @@ def instalar_y_configurar_bspwm_kali():
 			os.system("sudo cp wallpaper/wallpaper.jpg /etc/wallpaper/wallpaper.jpg")
 
 			instalar_y_configurar_polybar("PC")
+			use_vmware()
 			print("[ BSPWM instalado ]")
 			reiniciar()
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
