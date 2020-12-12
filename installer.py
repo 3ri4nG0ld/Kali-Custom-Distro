@@ -19,37 +19,35 @@ def use_vmware():
 		return
 	else:
 		return
-
 def instalar_scripts(plataforma):
 	os.system("sudo chmod +x scripts/genericos/*")
 	os.system("sudo chmod +x scripts/especificos/*")
 
+	os.system("sudo cp scripts/genericos/* /usr/bin/") # Copia los scripts Genericos a /usr/bin/
+
 	if (plataforma == "PC"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
-		# Añadir aqui Scripts especificos
+		pass # Añadir aqui Scripts especificos
 
 	elif (plataforma == "PC-NOGUI"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
-		# Añadir aqui Scripts especificos
+		pass # Añadir aqui Scripts especificos
 
 	elif (plataforma == "LAPTOP"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
+		instalar_requisitos("BATTERY-SCRIPT")
 		os.system("sudo cp scripts/especificos/battery-laptop /usr/bin/battery")
 		# Añadir aqui Scripts especificos
 
 	elif (plataforma == "LAPTOP-NOGUI"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
+		instalar_requisitos("BATTERY-SCRIPT")
 		os.system("sudo cp scripts/especificos/battery-laptop /usr/bin/battery")
 		# Añadir aqui Scripts especificos
 
 	elif (plataforma == "WSL2"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
+		pass
 		# Añadir aqui Scripts especificos
 
 	elif (plataforma == "NETHUNTER"):
-		os.system("sudo cp scripts/genericos/* /usr/bin/")
+		pass
 		# Añadir aqui Scripts especificos
-
 def eliminar_Desktop_Enviroment():
 	os.system("clear")
 	print("Esto eliminara el entorono de escitorio actual")
@@ -73,7 +71,6 @@ def eliminar_Desktop_Enviroment():
 		print("NO se Eliminara")
 	else:
 		print("NO se Eliminara")
-
 # Terminar de Configurar
 # |
 # v
@@ -88,16 +85,12 @@ def instalar_y_configurar_i3wm_kali():
 		print("NO se Instalara")
 	else:
 		print("NO se Instalara")
-
 def configuracion_qterminal():
 	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
 	print("Configuracion de Qterminal copiada")
-
-
 def instalar_fuentes():
 
 	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip && sudo unzip /usr/local/share/fonts/Hack.zip && sudo rm -rf /usr/local/share/fonts/Hack.zip")
-
 def instalar_y_configurar_polybar(tipo):
 	os.system("sudo apt-get install polybar -y")
 	instalar_fuentes()
@@ -112,7 +105,6 @@ def instalar_y_configurar_polybar(tipo):
 	elif (tipo == "LAPTOP"):
 		print("Configurar Polybar LAPTOP")
 		os.system("sudo cp configs/POLYBAR-LAPTOP /etc/polybar/config")
-
 def instalar_y_configurar_bspwm_kali():
 	os.system("sudo apt-get update")
 	os.system("clear")
@@ -150,11 +142,8 @@ def instalar_y_configurar_bspwm_kali():
 		print("NO se Instalara")
 	else:
 		print("NO se Instalara")
-
 def configurar_tmux():
 	return
-
-
 def reiniciar():
 	os.system("clear")
 	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no): ")
@@ -163,11 +152,7 @@ def reiniciar():
 		os.system("sudo reboot")
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
 		print("Saliendo...")
-
-
-
 def instalar_otras_herramientas():
-	os.system("new_line_before_prompt=no") #Elimina nueva linea por cada comando en ZSH
 	os.system("sudo apt-get install bat")
 
 
@@ -185,7 +170,6 @@ def instalar_kali_pc_nogui():
 	eliminar_Desktop_Enviroment()
 
 def instalar_kali_laptop():
-	instalar_requisitos("BATTERY-SCRIPT")
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali()
