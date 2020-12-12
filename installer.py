@@ -87,6 +87,7 @@ def instalar_y_configurar_i3wm_kali():
 		print("NO se Instalara")
 def configuracion_qterminal():
 	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
+	os.system("sudo rm -rf ~/.config/qterminal.org/qterminal.ini")
 	print("Configuracion de Qterminal copiada")
 def instalar_fuentes():
 
