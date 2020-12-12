@@ -2,11 +2,11 @@
 
 pgrep -x sxhkd > /dev/null || sxhkd -c /etc/sxhkd/sxhkdrc &
 compton --config /etc/compton/compton.conf &
+feh --bg-fill /etc/wallpaper/wallpaper.jpg &
 sh /etc/bspwm/scripts/launch-polybar.sh &
 
 wmname LG3D &
 
-feh --bg-fill /etc/wallpaper/wallpaper.jpg &
 bspc config pointer_modifier mod1
 
 bspc monitor -d I II III IV V VI VII VIII IX X

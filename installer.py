@@ -71,11 +71,11 @@ def eliminar_Desktop_Enviroment():
 def instalar_y_configurar_i3wm_kali():
 	os.system("sudo apt-get update")
 	os.system("clear")
-	opt=input("Quieres instalar i3wm??(Yes/no): ")
+	opt=input("Quieres instalar i3wm??(yes/No): ")
 
-	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
+	if((opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 		os.system("sudo apt-get install i3wm -y")
-	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
+	elif ((opt == "") or (opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
 		print("NO se Instalara")
 	else:
 		print("NO se Instalara")
@@ -145,7 +145,7 @@ def configurar_tmux():
 
 def reiniciar():
 	os.system("clear")
-	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no)")
+	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no): ")
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
 		print("Reiniciando...")
 		os.system("sudo reboot")
