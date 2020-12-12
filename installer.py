@@ -162,26 +162,22 @@ def instalar_kali_pc():
 	instalar_scripts("PC")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("PC")
-
 def instalar_kali_pc_nogui():
 	instalar_scripts("PC-NOGUI")
 	eliminar_Desktop_Enviroment()
-
 def instalar_kali_laptop():
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("LAPTOP")
-
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
 	eliminar_Desktop_Enviroment()
-
 def instalar_kali_wsl2():
 	instalar_scripts("WSL2")
 	configurar_tmux()
-
 def instalar_kali_nethunter():
 	instalar_scripts("NETHUNTER")
+	configurar_tmux()
 
 #[+------------------+] MAIN [+------------------+]
 os.system("clear")
