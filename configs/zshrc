@@ -157,6 +157,8 @@ function man() {
     man "$@"
 }
 
+
+
 [ -f /etc/fzf/fzf.zsh ] && source /etc/fzf/fzf.zsh
 
 new_line_before_prompt=no
@@ -172,6 +174,28 @@ precmd() {
 	    print ""
 	fi
     fi
+}
+
+function fzf-lovely(){
+
+	if [ "$1" = "h" ]; then
+		fzf -m --reverse --preview-window down:20 --preview '[[ $(file --mime {}) =~ binary ]] &&
+ 	                echo {} is a binary file ||
+	                 (bat --style=numbers --color=always {} ||
+	                  highlight -O ansi -l {} ||
+	                  coderay {} ||
+	                  rougify {} ||
+	                  cat {}) 2> /dev/null | head -500'
+
+	else
+	        fzf -m --preview '[[ $(file --mime {}) =~ binary ]] &&
+	                         echo {} is a binary file ||
+	                         (bat --style=numbers --color=always {} ||
+	                          highlight -O ansi -l {} ||
+	                          coderay {} ||
+	                          rougify {} ||
+	                          cat {}) 2> /dev/null | head -500'
+	fi
 }
 
 # enable color support of ls, less and man, and also add handy aliases
@@ -207,6 +231,10 @@ alias ls='lsd --group-dirs=first'
 alias cat='/usr/bin/batcat --pager=never'
 alias catn='/usr/bin/cat'
 alias nano='nano -l -m'
+alias sudo='sudo '
+
+
+
 
 # enable auto-suggestions based on the history
 if [ -f /usr/share/zsh-autosuggestions/zsh-autosuggestions.zsh ]; then

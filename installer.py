@@ -75,6 +75,9 @@ def eliminar_Desktop_Enviroment():
 	else:
 		print("NO se Eliminara")
 
+def instalar_touchpad_config():
+	os.system("sudo cp configs/touchpad_config /etc/X11/xorg.conf.d/30-touchpad.conf")
+
 def instalar_fzf_zsh():
 	os.system("sudo apt-get install fzf -y")
 	os.system("sudo mkdir /etc/fzf")
@@ -189,6 +192,7 @@ def instalar_kali_laptop():
 	instalar_y_configurar_bspwm_kali()
 	configurar_zsh()
 	instalar_fzf_zsh()
+	instalar_touchpad_config()
 	instalar_otras_herramientas()
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
