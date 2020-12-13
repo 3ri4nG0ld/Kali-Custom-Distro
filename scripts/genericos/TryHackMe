@@ -32,6 +32,7 @@ def obtener_dpi():
 def cerrar_vpn():
 	if (checkear_procesos()):
 		print("Finalizando Conexión...")
+		os.system("sudo echo '' >> /dev/null")
 		os.system("sudo kill -9 " + str(obtener_dpi()) + " 2>&1 >> /dev/null")
 		os.system("sudo kill -9 " + str(obtener_dpi()) + " 2>&1 >> /dev/null")
 	else:
@@ -46,6 +47,7 @@ def abrir_vpn():
 			reiniciar_vpn()
 	else:
 		print("Iniciando Conexión...")
+		os.system("sudo echo '' >> /dev/null")
 		os.system("sudo openvpn ~/.config/VPNs/"+ vpn +".ovpn 2>&1 >> /dev/null &")
 
 
