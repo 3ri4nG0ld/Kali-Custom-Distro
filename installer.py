@@ -110,7 +110,7 @@ def instalar_y_configurar_polybar():
 	os.system("sudo mkdir /etc/polybar/")
 	os.system("sudo cp configs/POLYBAR /etc/polybar/config")
 	
-def instalar_y_configurar_bspwm_kali(tipo):
+def instalar_y_configurar_bspwm_kali():
 	os.system("sudo apt-get update")
 	os.system("clear")
 	opt=input("Quieres instalar bspwm??(Yes/no): ")
@@ -143,7 +143,7 @@ def instalar_y_configurar_bspwm_kali(tipo):
 			use_vmware()
 			configuracion_qterminal()
 			print("[ BSPWM instalado ]")
-			reiniciar()
+			return
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
 		print("NO se Instalara")
 	else:
@@ -174,7 +174,7 @@ def instalar_otras_herramientas():
 def instalar_kali_pc():
 	instalar_scripts("PC")
 	instalar_y_configurar_i3wm_kali()
-	instalar_y_configurar_bspwm_kali("PC")
+	instalar_y_configurar_bspwm_kali()
 	configurar_zsh()
 	instalar_fzf_zsh()
 def instalar_kali_pc_nogui():
@@ -184,7 +184,7 @@ def instalar_kali_pc_nogui():
 def instalar_kali_laptop():
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
-	instalar_y_configurar_bspwm_kali("LAPTOP")
+	instalar_y_configurar_bspwm_kali()
 	configurar_zsh()
 	instalar_fzf_zsh()
 def instalar_kali_laptop_nogui():
@@ -223,3 +223,5 @@ elif (opt=="6"):
 	instalar_kali_nethunter()
 else:
 	print("* Opcion no valida")
+
+reiniciar()
