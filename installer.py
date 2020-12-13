@@ -10,6 +10,9 @@ def instalar_requisitos(programa):
 	elif (programa == "BSPWM"):
 		os.system("sudo apt-get install libxcb-xinerama0-dev libxcb-icccm4-dev libxcb-randr0-dev libxcb-util0-dev libxcb-ewmh-dev libxcb-keysyms1-dev libxcb-shape0-dev -y")
 		os.system("sudo apt-get install compton feh rofi compton git -y")
+	elif (programa == "zsh"):
+		os.system("sudo apt-get install bat -y")
+		os.system("cd /tmp/ && wget https://github.com/Peltoche/lsd/releases/download/0.19.0/lsd_0.19.0_amd64.deb && sudo dpkg -i lsd_*")
 def use_vmware():
 	os.system("clear")
 	opt=input("Usas VMware?? (yes/No): ")
@@ -71,6 +74,12 @@ def eliminar_Desktop_Enviroment():
 		print("NO se Eliminara")
 	else:
 		print("NO se Eliminara")
+
+def instalar_fzf_zsh():
+	os.system("sudo apt-get install fzf -y")
+	os.system("sudo mkdir /etc/fzf")
+	os.system("sudo cp configs/fzf.zsh /etc/fzf/fzf.zsh")
+	os.system("sudo chmod 555 /etc/fzf/fzf.zsh")
 # Terminar de Configurar
 # |
 # v
@@ -139,6 +148,11 @@ def instalar_y_configurar_bspwm_kali(tipo):
 		print("NO se Instalara")
 	else:
 		print("NO se Instalara")
+def configurar_zsh():
+	instalar_requisitos("zsh")
+	os.system("sudo cp configs/zshrc /etc/zsh/zshrc")
+	os.system("sudo rm -r ~/.zshrc")
+	pass
 def configurar_tmux():
 	return
 def reiniciar():
@@ -161,13 +175,16 @@ def instalar_kali_pc():
 	instalar_scripts("PC")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("PC")
+	configurar_zsh()
 def instalar_kali_pc_nogui():
 	instalar_scripts("PC-NOGUI")
 	eliminar_Desktop_Enviroment()
+	configurar_zsh()
 def instalar_kali_laptop():
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("LAPTOP")
+	configurar_zsh()
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
 	eliminar_Desktop_Enviroment()
