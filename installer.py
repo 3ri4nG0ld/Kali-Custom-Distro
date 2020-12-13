@@ -90,8 +90,9 @@ def configuracion_qterminal():
 	os.system("sudo cp configs/qterminal.ini /etc/xdg/qterminal.org/qterminal.ini")
 	print("Configuracion de Qterminal copiada")
 def instalar_fuentes():
-
 	os.system("cd /usr/local/share/fonts && sudo wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.1.0/Hack.zip && sudo unzip /usr/local/share/fonts/Hack.zip && sudo rm -rf /usr/local/share/fonts/Hack.zip")
+	os.system("sudo cp custom-font/* /usr/local/share/fonts/")
+	os.system("sudo chmod 555 /usr/local/share/fonts/*")
 def instalar_y_configurar_polybar():
 	os.system("sudo apt-get install polybar -y")
 	instalar_fuentes()
