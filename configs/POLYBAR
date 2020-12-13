@@ -96,30 +96,30 @@ cursor-scroll = ns-resize
 [module/bspwm]
 type = internal/bspwm
 
-label-focused = ""
+label-focused = "  "
 label-focused-padding = ${options.generic-pading}
 label-focused-foreground = ${colors.foreground-bspwm}
 label-focused-background = ${colors.background-bspwm}
 
-label-occupied = ""
+label-occupied = "  "
 label-occupied-padding = ${options.generic-pading}
 label-occupied-foreground = ${colors.foreground-bspwm}
 label-occupied-background = ${colors.background-bspwm}
 
-label-urgent = ""
+label-urgent = "  "
 label-urgent-padding = ${options.generic-pading}
 label-urgent-foreground = ${colors.foreground-bspwm}
 label-urgent-background = ${colors.background-bspwm}
 
-label-empty = ""
+label-empty = "  "
 label-empty-padding = ${options.generic-pading}
 label-empty-foreground = ${colors.foreground-bspwm}
 label-empty-background = ${colors.background-bspwm}
 
 ; Separator in between workspaces
-label-separator = |
-label-separator-background = ${colors.background-bspwm}
-
+;label-separator = "|"
+;label-separator-background = ${colors.background-bspwm}
+;label-separator-foreground = ${colors.foreground-bspwm}
 
 ;------------------------------------------------------ Modulo wlan0
 [module/wlan]
