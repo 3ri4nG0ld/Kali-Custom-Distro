@@ -10,6 +10,8 @@ background-hora = #444
 background-volume = #444
 background-battery = #444
 background-thm = #444
+background-tray = #444
+background-whoami = #444
 
 
 ;---[ Colores de Letra ]---+
@@ -22,6 +24,7 @@ foreground-fecha = #fff
 foreground-hora = #fff
 foreground-volume = #fff
 foreground-battery = #fff
+foreground-whoami = #fff
 
 ;---[ Colores de Letra ]---+
 icon-thm = #ff0000
@@ -65,13 +68,13 @@ font-3 = TryHackMe :pixelsize=18;3
 font-4 = Hack Nerd Font Mono :pixelsize=18;3
 
 
-modules-left = bspwm
+modules-left = whoami bspwm
 modules-center =
-modules-right = wlan eth HackTheBox TryHackMe battery pulseaudio fecha hora whoami
+modules-right = wlan eth HackTheBox TryHackMe battery pulseaudio fecha hora 
 
 tray-position = right
 tray-padding = ${options.generic-pading}
-tray-background = #000000
+tray-background = ${colors.background-tray}
 
 ;wm-restack = bspwm
 ;wm-restack = i3
@@ -114,8 +117,8 @@ label-empty-foreground = ${colors.foreground-bspwm}
 label-empty-background = ${colors.background-bspwm}
 
 ; Separator in between workspaces
-;label-separator = |
-
+label-separator = |
+label-separator-background = ${colors.background-bspwm}
 
 
 ;------------------------------------------------------ Modulo wlan0
@@ -123,9 +126,9 @@ label-empty-background = ${colors.background-bspwm}
 type = internal/network
 interface = wlan0
 interval = 3.0
-format-connected = "%{A1:notify-send $(ip addr show wlan0 | grep '/24' | cut -d ' ' -f 6 ):} <label-connected> %{A}"
+format-connected = "%{A1:notify-send ($(iwconfig wlan0 | grep "wlan0" | cut '"' -f2)) $(ip addr show eth0 | grep '/24' | cut -d ' ' -f 6 ):} <label-connected> %{A}"
 format-connected-prefix = " "
-label-connected = "(%essid%) %local_ip%"
+label-connected = "%local_ip%"
 
 format-connected-foreground = ${colors.foreground-wlan}
 format-connected-background = ${colors.background-wlan}
@@ -179,7 +182,7 @@ ramp-volume-1 = ""
 ramp-volume-2 = ""
 
 label-volume = " %percentage%%"
-label-volume-foreground = ${root.foreground}
+label-volume-foreground = ${colors.foreground-volume}
 
 label-muted = "ﱝ %percentage%%"
 label-muted-foreground = #ff0f0f
@@ -236,8 +239,10 @@ animation-charging-framerate = 750
 type = custom/script
 exec = getent passwd $USER | cut -d ":" -f 5 | sed -s 's/,,,//g'
 tail = false
+
 format = "%{A1:thunar &:} <label>%{A}"
-format-background = ${colors.background-volume}
+format-background = ${colors.background-whoami}
+format-foreground = ${colors.foreground-whoami}
 format-padding = ${options.generic-pading}
 
 
