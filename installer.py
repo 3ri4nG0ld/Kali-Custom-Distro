@@ -176,6 +176,7 @@ def instalar_kali_pc():
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("PC")
 	configurar_zsh()
+	instalar_fzf_zsh()
 def instalar_kali_pc_nogui():
 	instalar_scripts("PC-NOGUI")
 	eliminar_Desktop_Enviroment()
@@ -185,6 +186,7 @@ def instalar_kali_laptop():
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali("LAPTOP")
 	configurar_zsh()
+	instalar_fzf_zsh()
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
 	eliminar_Desktop_Enviroment()
