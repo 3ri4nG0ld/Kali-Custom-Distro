@@ -3,6 +3,7 @@
 pgrep -x sxhkd > /dev/null || sxhkd -c /etc/sxhkd/sxhkdrc &
 compton --config /etc/compton/compton.conf &
 feh --bg-fill /etc/wallpaper/wallpaper.jpg &
+nm-applet &
 sh /etc/bspwm/scripts/launch-polybar.sh &
 
 wmname LG3D &
