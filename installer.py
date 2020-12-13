@@ -164,7 +164,7 @@ def reiniciar():
 	elif ((opt == "N") or (opt == "NO") or (opt == "no") or (opt == "n")):
 		print("Saliendo...")
 def instalar_otras_herramientas():
-	os.system("sudo apt-get install bat")
+	os.system("sudo apt-get install tree htop -y")
 
 
 
@@ -177,25 +177,37 @@ def instalar_kali_pc():
 	instalar_y_configurar_bspwm_kali()
 	configurar_zsh()
 	instalar_fzf_zsh()
+	instalar_otras_herramientas()
 def instalar_kali_pc_nogui():
 	instalar_scripts("PC-NOGUI")
 	eliminar_Desktop_Enviroment()
 	configurar_zsh()
+	instalar_otras_herramientas()
 def instalar_kali_laptop():
 	instalar_scripts("LAPTOP")
 	instalar_y_configurar_i3wm_kali()
 	instalar_y_configurar_bspwm_kali()
 	configurar_zsh()
 	instalar_fzf_zsh()
+	instalar_otras_herramientas()
 def instalar_kali_laptop_nogui():
 	instalar_scripts("LAPTOP-NOGUI")
 	eliminar_Desktop_Enviroment()
+	configurar_zsh()
+	instalar_fzf_zsh()
+	instalar_otras_herramientas()
 def instalar_kali_wsl2():
 	instalar_scripts("WSL2")
 	configurar_tmux()
+	configurar_zsh()
+	instalar_fzf_zsh()
+	instalar_otras_herramientas()
 def instalar_kali_nethunter():
 	instalar_scripts("NETHUNTER")
 	configurar_tmux()
+	configurar_zsh()
+	instalar_fzf_zsh()
+	instalar_otras_herramientas()
 
 #[+------------------+] MAIN [+------------------+]
 os.system("clear")
