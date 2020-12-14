@@ -3,6 +3,12 @@
 import os
 #[+------------------+] FUNCIONES [+------------------+]
 def instalar_requisitos(programa):
+	#-------------------------------------------------------------------#
+	#
+	# Esta funcion sirve para instalar los requisitos de otros
+	# programas o scripts
+	#
+	#-------------------------------------------------------------------#
 	os.system("sudo apt-get update")
 	os.system("clear")
 	if (programa == "BATTERY-SCRIPT"):
@@ -14,6 +20,17 @@ def instalar_requisitos(programa):
 		os.system("sudo apt-get install bat -y")
 		os.system("cd /tmp/ && wget https://github.com/Peltoche/lsd/releases/download/0.19.0/lsd_0.19.0_amd64.deb && sudo dpkg -i lsd_*")
 def use_vmware():
+	#-------------------------------------------------------------------#
+	#																	
+	# Esta funcion sirve para modificar el archivo /etc/bspwm/bspwmrc	
+	# e incluir en este la linea vmware-user-suid-wrapper &				
+	# que permite a VMware compartir el portapapeles entre la 			
+	# maquina virtual y la maquina releases. 							
+	#																	
+	# Esta funcion solo deveria ejecutarse si el usuario 				
+	# decide instalarlo.												
+	#																	
+	#-------------------------------------------------------------------#
 	os.system("clear")
 	opt=input("Usas VMware?? (yes/No): ")
 	if ((opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
@@ -23,6 +40,21 @@ def use_vmware():
 	else:
 		return
 def instalar_scripts(plataforma):
+	#-------------------------------------------------------------------#
+	#
+	# Esta funcion sirve para instalar los scripts  
+	# que se guardan en la carpeta scripts
+	#
+	# Existen 2 tipos de scripts aqui:
+	#	- Los Genericos :  Aquellos que se van a poder utilizar 
+	#		independientemente de la plataforma en la que se use.
+	#	
+	#	- Los Especificos : Los creados para funcionar en una 
+	#		plataforma especifica
+	#
+	#-------------------------------------------------------------------#
+
+
 	os.system("sudo chmod +x scripts/genericos/*")
 	os.system("sudo chmod +x scripts/especificos/*")
 
@@ -52,6 +84,13 @@ def instalar_scripts(plataforma):
 		pass
 		# Añadir aqui Scripts especificos
 def eliminar_Desktop_Enviroment():
+	#-------------------------------------------------------------------#
+	#
+	# Esta funcion sirve para eliminar el escritorio del sistema 
+	# para que este sea utilizable unicamente en modo consola de 
+	# comandos.
+	#
+	#-------------------------------------------------------------------#
 	os.system("clear")
 	print("Esto eliminara el entorono de escitorio actual")
 	opt=input("Estas seguro de querer continuar?(yes/No): ")
@@ -76,9 +115,27 @@ def eliminar_Desktop_Enviroment():
 		print("NO se Eliminara")
 
 def instalar_touchpad_config():
+	#-------------------------------------------------------------------#
+	#
+	# Esta funcion sirve unicamente para copiar la configuración
+	# del touchpad a su carpeta correspondiente.
+	#
+	# Esta configuracion es util si queremos activar el "Touch to click"
+	# en nuestro laptop
+	#
+	#-------------------------------------------------------------------#
 	os.system("sudo cp configs/touchpad_config /etc/X11/xorg.conf.d/30-touchpad.conf")
 
 def instalar_fzf_zsh():
+	#-------------------------------------------------------------------#
+	#									(https://github.com/junegunn/fzf)
+	# Esta funcion sirve para instalar fzf
+	# y los archivos de configuracion del mismo
+	#
+	# Esto esta echo asi para permitir su uso con cualquier usuario
+	# sin que este tenga que instalarlo manualmente.
+	#
+	#-------------------------------------------------------------------#
 	os.system("sudo apt-get install fzf -y")
 	os.system("sudo mkdir /etc/fzf")
 	os.system("sudo cp configs/fzf.zsh /etc/fzf/fzf.zsh")
@@ -159,6 +216,14 @@ def configurar_zsh():
 def configurar_tmux():
 	return
 def reiniciar():
+	#-------------------------------------------------------------------#
+	#
+	# Esta funcion sirve unicamente para reiniciar el equipo
+	# despues de realizar la instalación.
+	#
+	# Este pregunta antes de reiniciar
+	#
+	#-------------------------------------------------------------------#
 	os.system("clear")
 	opt = input("Desea reiniciar para aplicar los cambios??(Yes/no): ")
 	if((opt == "") or (opt == "YES") or (opt == "yes") or (opt == "y") or (opt == "Y")):
